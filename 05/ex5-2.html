@@ -11,12 +11,15 @@
     <script>
         osql.requireLogin();//すべてのページに入れる．google認証をして，osql.connect()や，osql.getMe()を使えるようにしてくれる．
 
+        function button1Pressed() {
+            doInsert();
+        }
 
         $().ready(function () {
-            doSelect();
+            setInterval(doSelect,2000);
         });
 
-        /*async function doInsert() {
+        async function doInsert() {
             var userid = document.getElementById('tf1').value;
             var tweet = document.getElementById('tf2').value;
 
@@ -26,7 +29,7 @@
 
             document.getElementById('tf2').value = "";
             document.getElementById('resultTweet').innerHTML = "tweetしました";
-        }*/
+        }
 
         async function doSelect() {
             var sql = 'select * from Tweets order by time desc limit 20';
