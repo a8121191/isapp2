@@ -11,12 +11,12 @@
     <script>
         osql.requireLogin();//すべてのページに入れる．google認証をして，osql.connect()や，osql.getMe()を使えるようにしてくれる．
 
-        function button1Pressed() {
-            doInsert();
-            doSelect();
-        }
 
-        async function doInsert() {
+        $().ready(function () {
+            doSelect();
+        });
+
+        /*async function doInsert() {
             var userid = document.getElementById('tf1').value;
             var tweet = document.getElementById('tf2').value;
 
@@ -26,7 +26,7 @@
 
             document.getElementById('tf2').value = "";
             document.getElementById('resultTweet').innerHTML = "tweetしました";
-        }
+        }*/
 
         async function doSelect() {
             var sql = 'select * from Tweets order by time desc limit 20';
@@ -53,7 +53,7 @@
     tweet:<input id="tf2" type="textfield">
     <button onclick="button1Pressed()">tweet</button>
     <br>
-    <p id="resultTweet"></p>
+    <p id="restltTweet"></p>
     <hr>
     <p id="resultTweets">xxxx</p>
 </body>
