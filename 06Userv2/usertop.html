@@ -20,8 +20,13 @@
         function write_name(){
             var name = sessionStorage.getItem("username");
             document.getElementById("welcome").innerHTML = "ようこそ" + name + "さん";
-        }//~6-1
+            //~6-1
 
+            //6-2
+            var id = sessionStorage.getItem("userid");
+            document.getElementById("userInfoChange").href += "?userid="+id;
+            //~6-2
+        }
 
     </script>
 
@@ -31,6 +36,7 @@
     <h1>ユーザトップ</h1>
     <p id="welcome"></p>
     <hr>
+    <a id="userInfoChange" href="update.html">ユーザ情報変更</a>
 
 </body>
 
