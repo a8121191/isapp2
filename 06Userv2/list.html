@@ -39,6 +39,8 @@
             var sql = `delete from Users where id ="${userid}"`
             var objects = await osql.connect(sql);
             console.log(objects);
+
+            execSelect();
         }
 
         async function delete_specificUserInfo(id){
