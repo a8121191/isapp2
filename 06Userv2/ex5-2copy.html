@@ -32,6 +32,9 @@
         }
 
         async function doSelect() {
+            var name = sessionStorage.getItem("username");
+            document.getElementById("tf1").value = name;
+
             var sql = 'select * from Tweets order by time desc limit 20';
             var objects = await osql.connect(sql);
             console.log(objects);
