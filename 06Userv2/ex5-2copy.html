@@ -16,6 +16,7 @@
         }
 
         $().ready(function () {
+            doSelect();
             setInterval(doSelect,2000);
         });
 
@@ -32,8 +33,8 @@
         }
 
         async function doSelect() {
-            var name = sessionStorage.getItem("username");
-            document.getElementById("tf1").value = name;
+            var id = sessionStorage.getItem("userid");
+            document.getElementById("tf1").value = id;
 
             var sql = 'select * from Tweets order by time desc limit 20';
             var objects = await osql.connect(sql);
