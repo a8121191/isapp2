@@ -16,7 +16,7 @@
         }
 
         $().ready(function () {
-            setInterval(doSelect,2000);
+            setInterval(doSelect, 2000);
         });
 
         async function doInsert() {
@@ -28,7 +28,7 @@
             console.log(objects);
 
             document.getElementById('tf2').value = "";
-            document.getElementById('resultTweet').innerHTML = "tweetしました";
+            document.getElementById('resultTweet').innerHTML = 'tweetしました';
         }
 
         async function doSelect() {
@@ -39,7 +39,7 @@
             html = html + '<ul>';
             for (var i = 0; i < objects.length; i++) {
                 var object = objects[i];
-                html = html + '<li>' + object.id + "," + object.name + "," + object.tweet + "," + object.time +'</li>';
+                html = html + '<li>' + object.id + "," + object.name + "," + object.tweet + "," + object.time + '</li>';
             }
             html = html + '</ul>';
             document.getElementById('resultTweets').innerHTML = html;
@@ -56,7 +56,7 @@
     tweet:<input id="tf2" type="textfield">
     <button onclick="button1Pressed()">tweet</button>
     <br>
-    <p id="restltTweet"></p>
+    <p id="resultTweet"></p>
     <hr>
     <p id="resultTweets">xxxx</p>
 </body>
