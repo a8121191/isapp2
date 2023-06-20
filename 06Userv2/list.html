@@ -26,16 +26,16 @@
                 var object = objects[i];
                 html = html + '<td>' + object.id + '</td>';
                 html = html + '<td>' + object.name + '</td>';
-                html = html + '<td>' + '<button onclick="follow('+"'"+object.id+"'"+')">follow</button>' + '</td>';
+                html = html + '<td>' + '<button onclick="follow(' + "'" + object.id + "'" + ')">follow</button>' + '</td>';
                 html = html + '<td>' + '<a href="update.html?userid=' + object.id + '">変更</a>' + '</td>';
-                html = html + '<td>' + '<button onclick="delete_specificUserInfo('+"'"+object.id+"'"+')">削除</button>' + '</td>';
+                html = html + '<td>' + '<button onclick="delete_specificUserInfo(' + "'" + object.id + "'" + ')">削除</button>' + '</td>';
                 html = html + '</tr>';
             }
             html = html + '</table>';
             document.getElementById('result').innerHTML = html;
         }
 
-        async function delete_userInfo(){
+        async function delete_userInfo() {
             var userid = document.getElementById("tf1").value;
             var sql = `delete from Users where id ="${userid}"`
             var objects = await osql.connect(sql);
@@ -44,11 +44,11 @@
             execSelect();
         }
 
-        async function delete_specificUserInfo(id){
+        async function delete_specificUserInfo(id) {
             var ans = window.confirm('本当にいいんですね？');
-            if(ans==true){
+            if (ans == true) {
                 var userid = id;
-                var sql = `delete from Users where id ="${userid}"`
+                var sql = `delete from Users where id ="${userid}"`;
                 var objects = await osql.connect(sql);
                 console.log(objects);
 
@@ -56,15 +56,17 @@
             }
         }
 
-        async function follow(id){
+        async function follow(id) {
             var toUserId = id;
             var myid = sessionStorage.getItem("userid");
-            var sql = `insert into Follows (toid,fromid) values("${toUserId}","${myid}");`;
+            if (toUserId != myid) {
+                var sql = `insert into Follows (toid,fromid) values("${toUserId}","${myid}");`;
+            }
             var objects = await osql.connect(sql);
             console.log(objects);
         }
 
-        
+
 
     </script>
 
