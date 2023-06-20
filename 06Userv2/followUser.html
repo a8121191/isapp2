@@ -16,7 +16,8 @@
         });
 
         async function execSelect() {
-            var sql = 'select * from Follows';
+            var id = sessionStorage.getItem("userid");
+            var sql = `select * from Follows where fromid ="${id}"`;
             var objects = await osql.connect(sql);
             console.log(objects);
             var html = '';
@@ -47,7 +48,7 @@
     <a href="list.html">ユーザ一覧</a>
     <hr>
     <p id="result">xxxx</p>
-    
+
 </body>
 
 </html>
